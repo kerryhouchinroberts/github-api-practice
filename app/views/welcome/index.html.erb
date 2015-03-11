@@ -1,0 +1,27 @@
+<h1>GitHub Repos</h1>
+
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:user, "GitHub User:") %>
+  <%= text_field_tag(:user) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<br />
+<br />
+
+<%= image_tag @user.avatar_url %>
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Location:</strong> <%= @user.location %></p>
+<p><strong>Created At:</strong> <%= @user.created_at %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+<p><strong>Company:</strong> <%= @user.company %></p>
+
+
+<p><strong>Repos:</strong>
+  <ul>
+    <% @gh.client.repos.each do |repo| %>
+    <li> <%= repo.to_h[:name] %> </li>
+    <% end %>
+  </ul>
+
+</p>
