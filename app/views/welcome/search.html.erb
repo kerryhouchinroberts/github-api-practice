@@ -9,7 +9,7 @@
 <br />
 <br />
 
-<%= image_tag @user.avatar_url, size: "250x250" %>
+<%= link_to (image_tag @user.avatar_url, size: "250x250"), @user.html_url %>
 <p><strong>Name:</strong> <%= @user.name %></p>
 <p><strong>Location:</strong> <%= @user.location %></p>
 <p><strong>Created At:</strong> <%= @user.created_at %></p>
@@ -21,7 +21,7 @@
 <p><strong>Repos:</strong>
   <ul>
     <% @repo.each do |repo| %>
-    <li> <%= repo[:name] %> </li>
+    <li> <%= link_to repo[:name], repo[:html_url], :target => "_blank" %> </li>
     <% end %>
   </ul>
 
